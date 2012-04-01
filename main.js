@@ -7,6 +7,8 @@ require("source/game.js");
 
 atom.dom(function(){
 
-    window.game = new Filler.Game('canvas'); // debug
+    window.game = new Filler.Game({
+        appendTo: '.filler',
+    }); // debug
 
 });

@@ -1,6 +1,6 @@
 // ==========
-// From: '/home/klen/Projects/simplefiller/main.js'
-// Zeta import: '/home/klen/Projects/simplefiller/libs/atom-full-compiled.js'
+// From: '/home/klen/Projects/simple/main.js'
+// Zeta import: '/home/klen/Projects/simple/libs/atom-full-compiled.js'
 /*
 ---
 
@@ -4474,8 +4474,8 @@ prototypize.proto(String, prototypize.fn(atom.string),
 }.call(typeof exports == 'undefined' ? window : exports, Object, Array));
 
 // ==========
-// From: '/home/klen/Projects/simplefiller/main.js'
-// Zeta import: '/home/klen/Projects/simplefiller/libs/libcanvas-full-compiled.js'
+// From: '/home/klen/Projects/simple/main.js'
+// Zeta import: '/home/klen/Projects/simple/libs/libcanvas-full-compiled.js'
 /*
 ---
 
@@ -10967,13 +10967,13 @@ declare( 'LibCanvas.Engines.Tile.Mouse', {
 }).call(typeof window == 'undefined' ? exports : window, atom, Math);
 
 // ==========
-// From: '/home/klen/Projects/simplefiller/main.js'
-// Zeta import: '/home/klen/Projects/simplefiller/source/init.js'
+// From: '/home/klen/Projects/simple/main.js'
+// Zeta import: '/home/klen/Projects/simple/source/init.js'
 LibCanvas.extract();
 
 // ==========
-// From: '/home/klen/Projects/simplefiller/source/app.js'
-// Zeta import: '/home/klen/Projects/simplefiller/source/graphic/button.js'
+// From: '/home/klen/Projects/simple/source/app.js'
+// Zeta import: '/home/klen/Projects/simple/source/graphic/button.js'
 atom.declare('Filler.Graphic.Button', {
 
     parent: App.Element,
@@ -11013,8 +11013,8 @@ atom.declare('Filler.Graphic.Button', {
 });
 
 // ==========
-// From: '/home/klen/Projects/simplefiller/source/app.js'
-// Zeta import: '/home/klen/Projects/simplefiller/source/graphic/timeline.js'
+// From: '/home/klen/Projects/simple/source/app.js'
+// Zeta import: '/home/klen/Projects/simple/source/graphic/timeline.js'
 atom.declare('Filler.Graphic.Timeline', {
 
     parent: App.Element,
@@ -11076,11 +11076,12 @@ atom.declare('Filler.Graphic.Timeline', {
 });
 
 // ==========
-// From: '/home/klen/Projects/simplefiller/source/game.js'
-// Zeta import: '/home/klen/Projects/simplefiller/source/app.js'
+// From: '/home/klen/Projects/simple/source/game.js'
+// Zeta import: '/home/klen/Projects/simple/source/app.js'
 atom.declare('Filler.App', {
 
     settings: {
+        appendTo: 'body',
         engineSize: new Point(38, 20),
         cellSize: new Point(22, 22),
         cellMargin: new Point(1, 1),
@@ -11105,6 +11106,7 @@ atom.declare('Filler.App', {
         this.game = game;
 
         var colors = this.colors = this.settings.get('colors'),
+            appendTo = this.settings.get('appendTo'),
             timeout = this.settings.get('timeout'),
             cellSize = this.cellSize = this.settings.get('cellSize'),
             cellMargin = this.cellMargin = this.settings.get('cellMargin'),
@@ -11116,7 +11118,7 @@ atom.declare('Filler.App', {
             fieldSize = this.fieldSize = new Point(zoneSize.x * 2 + engineFullSize.x,
                                   engineFullSize.y + footerSize.y),
 
-            app = new App({ size: fieldSize, invoke: false }),
+            app = new App({ size: fieldSize, invoke: false, appendTo: appendTo }),
             scene = this.scene = app.createScene({ name: 'filler', intersection: 'manual' }),
             mouse = this.mouse = new Mouse(app.container.bounds),
             handler = this.handler = new App.MouseHandler({ mouse: mouse, app: app }),
@@ -11149,8 +11151,8 @@ atom.declare('Filler.App', {
 });
 
 // ==========
-// From: '/home/klen/Projects/simplefiller/source/matrix.js'
-// Zeta import: '/home/klen/Projects/simplefiller/source/utils.js'
+// From: '/home/klen/Projects/simple/source/matrix.js'
+// Zeta import: '/home/klen/Projects/simple/source/utils.js'
 atom.declare('Filler.Utils', {
 
     own: {
@@ -11181,8 +11183,8 @@ atom.declare('Filler.Utils', {
 });
 
 // ==========
-// From: '/home/klen/Projects/simplefiller/source/graphic/tile/engine.js'
-// Zeta import: '/home/klen/Projects/simplefiller/source/graphic/tile/cell.js'
+// From: '/home/klen/Projects/simple/source/graphic/tile/engine.js'
+// Zeta import: '/home/klen/Projects/simple/source/graphic/tile/cell.js'
 atom.declare('Filler.Graphic.Tile.Cell', {
 
     parent: TileEngine.Cell,
@@ -11244,8 +11246,8 @@ atom.declare('Filler.Graphic.Tile.Cell', {
 });
 
 // ==========
-// From: '/home/klen/Projects/simplefiller/source/matrix.js'
-// Zeta import: '/home/klen/Projects/simplefiller/source/graphic/tile/engine.js'
+// From: '/home/klen/Projects/simple/source/matrix.js'
+// Zeta import: '/home/klen/Projects/simple/source/graphic/tile/engine.js'
 atom.declare('Filler.Graphic.Tile.Engine', {
 
     parent: TileEngine,
@@ -11296,8 +11298,8 @@ atom.declare('Filler.Graphic.Tile.Engine', {
 });
 
 // ==========
-// From: '/home/klen/Projects/simplefiller/source/game.js'
-// Zeta import: '/home/klen/Projects/simplefiller/source/matrix.js'
+// From: '/home/klen/Projects/simple/source/game.js'
+// Zeta import: '/home/klen/Projects/simple/source/matrix.js'
 atom.declare('Filler.Matrix', {
 
     corners: [
@@ -11505,8 +11507,8 @@ atom.declare('Filler.Matrix', {
 });
 
 // ==========
-// From: '/home/klen/Projects/simplefiller/source/player.js'
-// Zeta import: '/home/klen/Projects/simplefiller/source/graphic/counter.js'
+// From: '/home/klen/Projects/simple/source/player.js'
+// Zeta import: '/home/klen/Projects/simple/source/graphic/counter.js'
 atom.declare('Filler.Graphic.Counter', {
 
     parent: App.Element,
@@ -11567,8 +11569,8 @@ atom.declare('Filler.Graphic.Counter', {
 });
 
 // ==========
-// From: '/home/klen/Projects/simplefiller/source/game.js'
-// Zeta import: '/home/klen/Projects/simplefiller/source/player.js'
+// From: '/home/klen/Projects/simple/source/game.js'
+// Zeta import: '/home/klen/Projects/simple/source/player.js'
 atom.declare('Filler.Player', {
 
     initialize: function(app, number){
@@ -11622,8 +11624,8 @@ atom.declare('Filler.Player', {
 });
 
 // ==========
-// From: '/home/klen/Projects/simplefiller/source/game.js'
-// Zeta import: '/home/klen/Projects/simplefiller/source/strategy.js'
+// From: '/home/klen/Projects/simple/source/game.js'
+// Zeta import: '/home/klen/Projects/simple/source/strategy.js'
 atom.declare('Filler.RandomStrategy', {
     
     move: function(player, matrix){
@@ -11670,8 +11672,8 @@ atom.declare('Filler.GreedStrategy', {
 });
 
 // ==========
-// From: '/home/klen/Projects/simplefiller/main.js'
-// Zeta import: '/home/klen/Projects/simplefiller/source/game.js'
+// From: '/home/klen/Projects/simple/main.js'
+// Zeta import: '/home/klen/Projects/simple/source/game.js'
 atom.declare('Filler.Game', {
 
     settings: {
@@ -11763,10 +11765,12 @@ atom.declare('Filler.Game', {
 });
 
 // ==========
-// Zeta import: '/home/klen/Projects/simplefiller/main.js'
+// Zeta import: '/home/klen/Projects/simple/main.js'
 atom.dom(function(){
 
-    window.game = new Filler.Game('canvas'); // debug
+    window.game = new Filler.Game({
+        appendTo: '.filler',
+    }); // debug
 
 });
 
