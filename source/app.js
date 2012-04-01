@@ -5,6 +5,7 @@ require('graphic/timeline.js');
 atom.declare('Filler.App', {
 
     settings: {
+        appendTo: 'body',
         engineSize: new Point(38, 20),
         cellSize: new Point(22, 22),
         cellMargin: new Point(1, 1),
@@ -29,6 +30,7 @@ atom.declare('Filler.App', {
         this.game = game;
 
         var colors = this.colors = this.settings.get('colors'),
+            appendTo = this.settings.get('appendTo'),
             timeout = this.settings.get('timeout'),
             cellSize = this.cellSize = this.settings.get('cellSize'),
             cellMargin = this.cellMargin = this.settings.get('cellMargin'),
@@ -40,7 +42,7 @@ atom.declare('Filler.App', {
             fieldSize = this.fieldSize = new Point(zoneSize.x * 2 + engineFullSize.x,
                                   engineFullSize.y + footerSize.y),
 
-            app = new App({ size: fieldSize, invoke: false }),
+            app = new App({ size: fieldSize, invoke: false, appendTo: appendTo }),
             scene = this.scene = app.createScene({ name: 'filler', intersection: 'manual' }),
             mouse = this.mouse = new Mouse(app.container.bounds),
             handler = this.handler = new App.MouseHandler({ mouse: mouse, app: app }),
