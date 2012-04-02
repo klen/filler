@@ -1,11 +1,6 @@
-require('graphic/button.js');
-require('graphic/timeline.js');
-
-
 atom.declare('Filler.App', {
 
     settings: {
-        appendTo: 'body',
         engineSize: new Point(38, 20),
         cellSize: new Point(22, 22),
         cellMargin: new Point(1, 1),
@@ -30,8 +25,8 @@ atom.declare('Filler.App', {
         this.game = game;
 
         var colors = this.colors = this.settings.get('colors'),
-            appendTo = this.settings.get('appendTo'),
             timeout = this.settings.get('timeout'),
+            appendTo = this.settings.get('appendTo'),
             cellSize = this.cellSize = this.settings.get('cellSize'),
             cellMargin = this.cellMargin = this.settings.get('cellMargin'),
             fCell = this.fCell = cellSize.clone().move(cellMargin),

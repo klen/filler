@@ -13,7 +13,7 @@ atom.declare('Filler.Graphic.Counter', {
         var player = this.player = this.settings.get('player'),
             animator = new atom.Animatable(this),
             animate = function(){
-                this.active = !this.active;
+                this.hidden = !this.hidden;
                 this.redraw();
                 animator.animate({
                     props: { },
@@ -22,15 +22,15 @@ atom.declare('Filler.Graphic.Counter', {
 
         this.app = this.settings.get('app');
         this.colors = this.settings.get('colors');
+        this.hidden = false;
         this.align = player.number % 2 ? 'left' : 'right';
-        this.active = true;
 
         this.shape.move(this.offsets[player.number].call(this));
 
         player.events.add('start', animate);
         player.events.add('done', function(player, value){
             animator.stop();
-            this.active = true;
+            this.hidden = false;
             this.redraw();
         }.bind(this));
     },
@@ -40,7 +40,7 @@ atom.declare('Filler.Graphic.Counter', {
     },
 
     get color (){
-        return this.active ? this.colors[this.player.value]()[0] : '#000';
+        return this.hidden ? '#000' : this.colors[this.player.value]()[0];
     },
 
     renderTo: function(ctx){
@@ -55,4 +55,5 @@ atom.declare('Filler.Graphic.Counter', {
                 align: this.align
             });
     }
+
 });

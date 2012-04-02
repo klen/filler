@@ -1,9 +1,5 @@
-clean: _main.js
-	rm -f _main.js
-	rm -rf libs
-
-static:
-	zeta $(CURDIR)
+clean:
+	find $(CURDIR) -name "*.orig" -delete
 
 test:
 	chromium-browser game.html

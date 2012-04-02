@@ -1,7 +1,3 @@
-require('utils.js');
-require('graphic/tile/engine.js');
-
-
 atom.declare('Filler.Matrix', {
 
     corners: [
@@ -18,7 +14,6 @@ atom.declare('Filler.Matrix', {
         this.events = new atom.Events(this);
 
         this.size = new Size(app.engineSize);
-        this.walls = [];
 
         var matrix = this,
             offset = new Point(app.zoneSize.x, 0),
@@ -46,10 +41,18 @@ atom.declare('Filler.Matrix', {
         this.players = [];
 
         tmouse.events.add({
-            over: function (cell) { if (canMove(cell)){ cell.active = true; }},
-            out: function (cell){ if (cell.active){ cell.active = false; } },
-            click: function (cell) { if (canMove(cell)){ matrix.events.fire('start', [cell.value]); }}
+            over: function (cell) { if (canMove(cell)){
+                cell.active = true;
+                app.scene.layer.element.css({ cursor: 'pointer' });
+
+            }},
+            out: function (cell){ if (cell.active){
+                cell.active = false;
+                app.scene.layer.element.css({ cursor: 'inherit' });
+            } },
+            click: function (cell) { if (canMove(cell)){ matrix.events.fire('click', [cell.value]); }}
         });
+
     },
 
     mix: function(){
@@ -170,7 +173,6 @@ atom.declare('Filler.Matrix', {
         }
 
         this.events.fire('update', [ player.points ]);
-        this.events.fire('done', arguments);
     },
 
     get free() {
@@ -187,7 +189,6 @@ atom.declare('Filler.Matrix', {
 
         if (this.players.length == 1){
             if(!free){
-                alert("Player one win");
                 return this.ended = true;
             }
         } else {
@@ -198,12 +199,11 @@ atom.declare('Filler.Matrix', {
             powers = powers.sort(function(a, b){ return b[0] - a[0]; });
 
             if (!free || (powers[0][0] - powers[1][0]) > free){
-                alert("Player " + (powers[0][1] + 1) +" win");
-                this.ended = true;
-                return true;
+                return this.ended = true;
             }
                 
         }
     }
 
 });
+

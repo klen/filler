@@ -13,14 +13,14 @@ atom.declare('Filler.Graphic.Button', {
         this.behaviors = new Behaviors(this);
         this.behaviors.add('Clickable', this.redraw).start();
 
-        game.events.add('start', this.move.bind(this));
+        game.events.add('start', this.update.bind(this));
         this.events.add('mousedown', function(){
             game.player.move(this.value);
         });
         
     },
 
-    move: function(moves, values){
+    update: function(moves, values){
         this.disabled = values.indexOf(this.value) < 0;
         this.redraw();
     },
@@ -28,8 +28,10 @@ atom.declare('Filler.Graphic.Button', {
     renderTo: function(ctx){
         if (this.hover && !this.disabled){
             ctx.fill(this.shape, this.color[0]);
+            this.scene.layer.element.css({ cursor: 'pointer' });
         } else {
             ctx.fill(this.shape, this.disabled ? '#000' : ctx.createGradient(this.shape, this.color));
+            this.scene.layer.element.css({ cursor: 'inherit' });
         }
         ctx.stroke(this.stroke, this.color[1]);
     }

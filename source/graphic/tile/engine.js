@@ -1,6 +1,3 @@
-require('cell.js');
-
-
 atom.declare('Filler.Graphic.Tile.Engine', {
 
     parent: TileEngine,

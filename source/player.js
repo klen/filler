@@ -1,6 +1,3 @@
-require('graphic/counter.js');
-
-
 atom.declare('Filler.Player', {
 
     initialize: function(app, number){
@@ -50,5 +47,10 @@ atom.declare('Filler.Player', {
         this.value = value;
         this.moves++;
         this.events.fire('done', [ this, this.value ]);
+    },
+
+    toString: function(){
+        return "[Player " + this.number + "]";
     }
+    
 });
