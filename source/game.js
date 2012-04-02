@@ -3,7 +3,7 @@ atom.declare('Filler.Game', {
     settings: {
         timeout: 21000,
         bots: {
-            0: 'GreedStrategy',
+            // 0: 'GreedStrategy',
             1: 'GreedStrategy',
             2: 'RandomStrategy',
             3: 'RandomStrategy'

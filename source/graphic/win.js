@@ -47,8 +47,8 @@ atom.declare('Filler.Graphic.Win', {
         var animator = new atom.Animatable(this),
             engine = game.matrix.engine,
             banner = this.banners[game.player.number],
-            xb = engine.width / 2 - 4,
-            yb = engine.height / 2 - 5,
+            xb = Math.floor(engine.width / 2 - 4),
+            yb = Math.floor(engine.height / 2 - 5),
             points = [],
             fill = game.matrix.values.random,
             animate = function(){
