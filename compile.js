@@ -1,0 +1,15 @@
+require("libs/atom-full-compiled.js");
+require("libs/libcanvas-full-compiled.js");
+require("source/init.js");
+require("source/graphic/button.js");
+require("source/graphic/win.js");
+require("source/graphic/timeline.js");
+require("source/graphic/counter.js");
+require("source/graphic/tile/cell.js");
+require("source/graphic/tile/engine.js");
+require("source/strategy.js");
+require("source/matrix.js");
+require("source/player.js");
+require("source/app.js");
+require("source/game.js");
+require("main.js");
